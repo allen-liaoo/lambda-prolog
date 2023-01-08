@@ -1,0 +1,26 @@
+%1+1=2
+plus (s z) (s z) (s (s z)).
+%2+1=3
+plus (s (s z)) (s z) (s (s (s z))).
+%1+2=3
+plus (s z) (s (s z)) (s (s (s z))).
+%X+Y=3
+plus X Y (s (s (s z))).
+
+%0*1=0
+mult z (s z) z.
+%3*2=6
+mult (s (s (s z))) (s (s z)) ANS.
+%2*3=6
+mult (s (s z)) (s (s (s z))) ANS.
+%X*Y=6
+mult X Y (s (s (s (s (s (s z))))))
+
+%1^3=1
+exp (s z) (s (s (s z))) L.
+%2^1=2
+exp (s (s z)) (s z) (s (s z)).
+%2^2=4
+exp (s (s z)) (s (s z)) (s (s (s (s z)))).
+%3^X=9
+exp (s (s (s z))) X (s (s (s (s (s (s (s (s (s z))))))))).
