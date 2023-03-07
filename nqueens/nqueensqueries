@@ -1,0 +1,3 @@
+tjcc nqueens; tjlink nqueens; tjsim nqueens
+
+nqueens 4 L.    => overflows after two anwsers

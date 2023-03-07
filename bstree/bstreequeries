@@ -1,0 +1,38 @@
+tjcc bstree; tjlink bstree; tjsim bstree
+
+member (node 25 "A" (node 12 "B" empty (node 15 "C" empty empty)) (node 30 "D" (node 27 "E" empty empty) empty)) V. 
+=> "A", "B", "C", "D", "E"
+
+search (node 25 "A" (node 12 "B" empty (node 15 "C" empty empty)) (node 30 "D" (node 27 "E" empty empty) empty)) 27 V. 
+=> "E"
+
+insert empty 10 "A" B.
+=> node 10 "A" empty empty
+
+insert (node 25 "A" (node 12 "B" empty (node 15 "C" empty empty)) (node 30 "D" (node 27 "E" empty empty) empty)) 10 "D" B.
+=> node 25 "A" (node 12 "B" (node 10 "D" empty empty) (node 15 "C" empty empty)) (node 30 "D" (node 27 "E" empty empty) empty)
+
+insert (node 25 "A" (node 12 "B" empty (node 15 "C" empty empty)) (node 30 "D" (node 27 "E" empty empty) empty)) 15 "REPLACED" B.
+=>
+
+leftMost (node 5 0 (node 4 0 (node 3 0 (node 2 0 (node 1 0 empty empty) empty) empty) empty) (node 6 0 empty empty)) N.
+=> node 1 0 empty empty
+
+delete (node 3 0 empty empty) 3 T.
+=> empty
+
+delete (node 3 0 (node 2 0 empty empty) empty) 3 T.
+=> node 2 0 empty empty
+
+delete (node 3 0 empty (node 4 0 empty empty)) 3 T.
+=> node 4 0 empty empty
+
+delete (node 3 0 (node 2 0 empty empty) (node 4 0 empty empty)) 3 T.
+=> node 4 0 (node 2 0 empty empty) empty
+
+// right subtree is more complicated
+delete (node 3 0 (node 2 0 empty empty) (node 7 0 (node 6 0 empty empty) (node 8 0 empty empty))) 3 T.
+=> node 6 0 (node 2 0 empty empty) (node 7 0 empty (node 8 0 empty empty))
+
+delete (node 3 0 (node 2 0 empty empty) (node 7 0 (node 6 0 (node 4 0 empty (node 5 0 empty empty)) empty) (node 8 0 empty empty))) 3 T.
+=> node 4 0 (node 2 0 empty empty) (node 7 0 (node 6 0 (node 5 0 empty empty) empty) (node 8 0 empty empty))

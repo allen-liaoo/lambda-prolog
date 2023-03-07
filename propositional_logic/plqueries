@@ -1,0 +1,31 @@
+tjcc pl; tjlink pl; tjsim pl
+isTrue (p 1) [(pr (p 1) t)].   => Y
+isTrue (p 1) [(pr (p 1) f)].   => N
+isTrue (neg (p 1)) [(pr (p 1) f)].     => Y
+isTrue (neg (p 1)) [(pr (p 1) t)].     => N
+
+isTrue ((p 1) and (p 2)) [(pr (p 1) t), (pr (p 2) t)].  => Y
+isTrue ((p 1) and (p 2)) [(pr (p 1) t), (pr (p 2) f)].  => N
+isTrue (neg (p 1) and (p 2)) [(pr (p 1) f), (pr (p 2) t)].  => Y
+
+isTrue ((p 1) or (p 2)) [(pr (p 1) f), (pr (p 2) t)].  => Y
+isTrue ((p 1) or (p 2)) [(pr (p 1) f), (pr (p 2) f)].  => N
+isTrue (neg (p 1) or neg (p 2)) [(pr (p 1) f),(pr (p 2) t)].  => Y
+
+varsOf (p 1) L.
+varsOf (neg (p 2)) [(p 1),(p 2)].   => N
+varsOf (neg (p 2)) L.
+varsOf ((p 1) or (p 2) and (p 1) or (p 4)) L.
+
+isAssignment [(p 1)] [(pr (p 2) f), (pr (p 1) f)].  => N
+isAssignment [(p 1), (p 2)] [(pr (p 1) t), (pr (p 2) f)].   => Y
+isAssignment [(p 1), (p 2)] [(pr (p 1) f), (pr (p 3) t), (pr (p 2) f)].   => N
+isAssignment [(p 1), (p 2), (p 3)] L.
+
+isTaut ((p 1) and (p 2)).   => N
+isTaut ((p 1) or neg (p 1)).  => Y
+isTaut ((p 1) or (neg (p 1) and neg (p 1))).  => Y
+p -> (q -> p)
+isTaut (neg (p 1) or (neg (p 2) or (p 1))).   => Y
+!p or q or p
+isTaut (neg (p 1) or neg (p 2) or (p 1)).     => Y
