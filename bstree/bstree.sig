@@ -12,7 +12,7 @@ type member     tree A -> A -> o.
 type search     tree A -> int -> A -> o.
 
 % insert [+T1] [+K] [+V] [-T2] is the case when [T2] is [T1] with a node of (node K V empty empty) inserted in the right place
-% if there is already a node [K] in the bst, then the value is replaced
+% if there is already a node with key [K] in the bst, then the value is replaced
 type insert     tree A -> int -> A -> tree A -> o.
 
 % delete [+T1] [+K] [-T2] is the case when [T2] is [T1] with the node with key [K] deleted ([T2] is still a bst)
