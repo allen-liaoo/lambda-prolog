@@ -27,4 +27,12 @@ type sublist    list A -> list A -> o.
 type subset_sum list int -> list int -> int -> o.
 
 type evenLength list A -> o.
+
+type forEach (A -> o) -> list A -> o.
+type exists (A -> o) -> list A -> o.
+type filter (A -> o) -> list A -> list A -> o.
+type map (A -> B -> o) -> list A -> list B -> o.
+type foldLeft (B -> A -> B -> o) -> B -> list A -> B -> o.
+type foldRight (A -> B -> B -> o) -> B -> list A -> B -> o.
+
 end

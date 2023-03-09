@@ -90,4 +90,26 @@ subset_sum (X::L1) L2 N :- subset_sum L1 L2 N.
 
 evenLength nil.
 evenLength (X::Y::L1) :- evenLength L1.
+
+forEach F nil.
+forEach F (X::L) :- F X , forEach F L.
+
+exists F (X::L) :- F X.
+exists F (_::L) :- exists F L.
+
+filter F nil nil.
+filter F (X::L1) (X::L2) :- F X , filter F L1 L2.
+filter F (X::L1) L2 :- not (F X) , filter F L1 L2.
+
+map F nil nil.
+map F (X::L1) (Y::L2) :- F X Y , map F L1 L2.
+
+%map F L1 L2 :- foldLeft (p\x\r\ r = (x::p)) nil L1 L2.
+
+foldLeft F I nil I.
+foldLeft F I (X::L) Z :- F I X Y , foldLeft F Y L Z.
+
+foldRight F I nil I.
+foldRight F I (X::L) Z :- foldRight F I L Y , F Y X Z.
+
 end
