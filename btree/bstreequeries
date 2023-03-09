@@ -1,0 +1,39 @@
+tjcc btree; ??
+tjcc bstree; tjlink bstree; tjsim bstree
+
+member (node (pr 25 "A") (node (pr 12 "B") empty (node (pr 15 "C") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)) V. 
+=> "A", "B", "C", "D", "E"
+
+search (node (pr 25 "A") (node (pr 12 "B") empty (node (pr 15 "C") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)) 27 V. 
+=> "E"
+
+insert empty 10 "A" B.
+=> node (pr 10 "A") empty empty
+
+insert (node (pr 25 "A") (node (pr 12 "B") empty (node (pr 15 "C") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)) 10 "D" B.
+=> node (pr 25 "A") (node (pr 12 "B") (node (pr 10 "D") empty empty) (node (pr 15 "C") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)
+
+insert (node (pr 25 "A") (node (pr 12 "B") empty (node (pr 15 "C") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)) 15 "REPLACED" B.
+=> node (pr 25 "A") (node (pr 12 "B") empty (node (pr 15 "REPLACED") empty empty)) (node (pr 30 "D") (node (pr 27 "E") empty empty) empty)
+
+leftMost (node (pr 5 0) (node (pr 4 0) (node (pr 3 0) (node (pr 2 0) (node (pr 1 0) empty empty) empty) empty) empty) (node (pr 6 0) empty empty)) N.
+=> node (pr 1 0) empty empty
+
+delete (node (pr 3 0) empty empty) 3 T.
+=> empty
+
+delete (node (pr 3 0) (node (pr 2 0) empty empty) empty) 3 T.
+=> node (pr 2 0) empty empty
+
+delete (node (pr 3 0) empty (node (pr 4 0) empty empty)) 3 T.
+=> node (pr 4 0) empty empty
+
+delete (node (pr 3 0) (node (pr 2 0) empty empty) (node (pr 4 0) empty empty)) 3 T.
+=> node (pr 4 0) (node (pr 2 0) empty empty) empty
+
+// right subtree is more complicated
+delete (node (pr 3 0) (node (pr 2 0) empty empty) (node (pr 7 0) (node (pr 6 0) empty empty) (node (pr 8 0) empty empty))) 3 T.
+=> node (pr 6 0) (node (pr 2 0) empty empty) (node (pr 7 0) empty (node (pr 8 0) empty empty))
+
+delete (node (pr 3 0) (node (pr 2 0) empty empty) (node (pr 7 0) (node (pr 6 0) (node (pr 4 0) empty (node (pr 5 0) empty empty)) empty) (node (pr 8 0) empty empty))) 3 T.
+=> node (pr 4 0) (node (pr 2 0) empty empty) (node (pr 7 0) (node (pr 6 0) (node (pr 5 0) empty empty) empty) (node (pr 8 0) empty empty))

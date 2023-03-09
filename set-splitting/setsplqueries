@@ -1,0 +1,21 @@
+tjcc setspl; tjlink setspl; tjsim setspl
+
+isGood [(pr 1 red),(pr 2 red),(pr 3 blue)] [[1,3],[2,3]].   => Y
+
+isGood [(pr 1 red),(pr 2 red),(pr 3 blue)] [[1,3],[1,2]].   => N
+
+setSplitting [1,2,3] [[1,2],[2,3]] [(pr 1 red),(pr 2 blue),(pr 3 red)]. => Y
+
+setSplitting [1,2,3] [[1,2],[2,3]] [(pr 1 red),(pr 2 red),(pr 3 red)].  => N
+
+setSplitting [1,2,3] [[1,2],[2,3]] A. 
+=> [(pr 1 red), (pr 2 blue), (pr 3 red)],
+    [(pr 1 blue), (pr 2 red), (pr 3 blue)]
+
+setSplitting [1,2,3] [[1,2],[2,3],[3,1]] A. => N
+
+setSplitting [1,2,3] [[1,2],[2,3],[3]] A. => N
+
+setSplitting [1,2,3,4] [[1,2],[2,3],[3,4],[1,4]] A. 
+=> [(pr 1 red), (pr 2 blue), (pr 3 red), (pr 4 blue)],
+    [(pr 1 blue), (pr 2 red), (pr 3 blue), (pr 4 red)]
