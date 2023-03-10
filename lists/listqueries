@@ -22,3 +22,10 @@ permute [1,2] L.
 permute [1,2] [2,1].
 permute [1,2] [1,2,2].
 permute [1,2,3] [3,1,2].
+
+foldLeft (r\x\ r + x) 0 [1,2,3,4] R.
+foldRight (r\x\ r + x) 0 [1,2,3,4] R.
+forall (x\ x >= 1 , x < 9) [2,6,1,8].
+forall (x\ (abs x) > 6) [2,4,6,8] L.
+exists (x\ x = 2) [1,4,7,2] L.
+map (x\ x + 1) [1,2,3,4] L.

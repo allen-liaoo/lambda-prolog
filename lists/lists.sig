@@ -28,11 +28,15 @@ type subset_sum list int -> list int -> int -> o.
 
 type evenLength list A -> o.
 
-type forEach (A -> o) -> list A -> o.
+% foldLeft [+F] [+I] [+L] [-R] folds the list from the left, using the fold function [F]  on the initial value [I] 
+% and each element in [L], and produces the resulting value [R]. 
+% The fold function takes the current node's value and the result of folding the left part of the list, and returns a value
+type foldLeft (B -> A -> B) -> B -> list A -> B -> o.
+type foldRight (A -> B -> B) -> B -> list A -> B -> o.
+
+type forall (A -> o) -> list A -> o.
 type exists (A -> o) -> list A -> o.
 type filter (A -> o) -> list A -> list A -> o.
-type map (A -> B -> o) -> list A -> list B -> o.
-type foldLeft (B -> A -> B -> o) -> B -> list A -> B -> o.
-type foldRight (A -> B -> B -> o) -> B -> list A -> B -> o.
+type map (A -> B) -> list A -> list B -> o.
 
 end

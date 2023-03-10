@@ -1,0 +1,13 @@
+tjcc btree; tjlink btree; tjsim btree
+
+% sum the tree's values
+foldTree (x\l\r\ (x + l) + r) 0 (node 1 (node 2 empty empty) (node 3 empty empty)) T.
+=> 1 + (2 + 0 + 0) + (3 + 0 + 0)
+
+forall (x\ x > 0) (node 1 (node 2 empty empty) (node 3 empty empty)).
+=> Y
+
+forall (x\ x <= 0) (node 1 (node 2 empty empty) (node 3 empty empty)).
+=> N
+
+map (x\ x + 1) (node 1 (node 2 empty empty) (node 3 empty empty)) T.
